@@ -1,0 +1,22 @@
+local player = game:GetService("Players").LocalPlayer
+local camera = workspace.CurrentCamera
+
+local currentCameraMode = "thirdPerson"
+
+local switchKey = Enum.KeyCode.C
+
+local function switchCameraMode()
+	if currentCameraMode == "thirdPerson" then
+		camera.CameraSubject = game.Workspace["sub exterior"]
+		currentCameraMode = "firstPerson"
+	else
+		camera.CameraSubject = player.Character
+		currentCameraMode = "thirdPerson"
+	end
+end
+
+game:GetService("UserInputService").InputBegan:Connect(function(inputObject)
+	if inputObject.KeyCode == switchKey then
+		switchCameraMode()
+	end
+end)
