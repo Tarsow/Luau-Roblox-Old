@@ -1,0 +1,6 @@
+local cursorIcon = "rbxassetid://SEU_ID_DO_CURSOR"
+
+local mouse = game.Players.LocalPlayer:GetMouse()
+
+mouse.Icon = cursorIcon
+mouse.Scale = 0.5 -- defina o valor de escala que você deseja
