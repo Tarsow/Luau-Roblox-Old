@@ -1,0 +1,9 @@
+game.Workspace.Prompt1.CanCollide=false
+game.Workspace.Prompt1.Transparency=1
+
+local proximityprompt = script.Parent
+proximityprompt.Triggered:Connect(function(player)
+	local sound=script.Parent["Metal Door Open"]
+	sound:Play()
+	player.Character.HumanoidRootPart.Position = game.Workspace.Destino1.Position
+end)
