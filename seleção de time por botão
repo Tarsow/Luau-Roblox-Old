@@ -1,0 +1,15 @@
+--local script
+--botão é apertado e aciona remote event
+
+script.Parent.MouseButton1Click:Connect(function()
+	game.ReplicatedStorage["Seleçãodetime"]:FireServer(script.Parent.Name)
+	script.Parent.Parent.Parent.Enabled=false
+end)
+
+-- local script recebe o remote event e dá o time ao jogador
+
+game.ReplicatedStorage["Seleçãodetime"].OnServerEvent:Connect(function(plr, team)	
+	plr.Team = game.Teams:FindFirstChild(team)
+
+	
+end)
