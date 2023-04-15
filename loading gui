@@ -1,3 +1,5 @@
+-- local script
+
 script.Parent.Parent.Parent.Enabled = true
 
 timer = 0
