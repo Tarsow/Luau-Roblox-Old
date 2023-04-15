@@ -1,0 +1,26 @@
+script.Parent.Parent.Parent.Enabled = true
+
+timer = 0
+percentage = 0
+transparency = 0
+
+repeat
+	script.Parent.Text = "Loading."
+	wait(0.4)
+	script.Parent.Text = "Loading.."
+	wait(0.4)
+	script.Parent.Text = "Loading..."
+	timer = timer + 1
+	wait(0.4)
+until timer == 5 do
+
+	repeat
+		percentage = percentage + 1
+		script.Parent.Text = "Loading: "..percentage.."%"
+		wait(0.06)
+	until percentage >= 100 do
+		wait(1)
+		script.Parent.Parent.Parent.Enabled = false
+		script.Disabled = true
+	end
+end
