@@ -1,0 +1,20 @@
+server script
+
+tool = script.Parent
+
+debounce = true
+
+function heal ()
+	if debounce then
+		debounce = false
+		local humanoid = tool.Parent:FindFirstChild("Humanoid")
+		local vida = humanoid.Health
+	
+			vida = vida + 20
+			script.heal:Play()			
+			wait(15)
+			debounce = true
+	end
+end
+
+tool.Activated:Connect(heal)
