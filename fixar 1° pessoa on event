@@ -1,3 +1,5 @@
+-- local script
+
 local jogador = game.Players.LocalPlayer
 
 game.ReplicatedStorage["camera"].OnClientEvent:Connect(function()
