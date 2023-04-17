@@ -1,0 +1,10 @@
+local jogador = game.Players.LocalPlayer
+
+game.ReplicatedStorage["camera"].OnClientEvent:Connect(function()
+
+wait(0.5)
+
+jogador.CameraMaxZoomDistance = 0
+jogador.CameraMode = Enum.CameraMode.LockFirstPerson
+
+end)
