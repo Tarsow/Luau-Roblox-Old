@@ -1,0 +1,15 @@
+-- local script
+
+script.Parent.MouseButton1Click:Connect(function()
+	local team = script.Parent.Name
+	game.ReplicatedStorage["Seleçãodetime"]:FireServer(team)
+	script.Parent.Parent.Parent.Enabled = false
+end)
+
+-- server script
+
+game.ReplicatedStorage["Seleçãodetime"].OnServerEvent:Connect(function(plr, team)	
+	plr.Team = game.Teams:FindFirstChild(team)
+
+	
+end)
