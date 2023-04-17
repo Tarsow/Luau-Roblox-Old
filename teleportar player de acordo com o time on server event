@@ -1,0 +1,8 @@
+game.ReplicatedStorage["Seleçãodetime"].OnServerEvent:Connect(function(player)
+	wait(1)
+	local teamName = player.Team.Name
+	if teamName == script.Parent.Name then
+		local destination = game.Workspace["sub interior"].Medic.CFrame + Vector3.new(0,2,0)
+		player.Character:SetPrimaryPartCFrame(destination)
+	end
+end)
