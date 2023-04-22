@@ -1,0 +1,79 @@
+-- local script
+
+local player = game:GetService("Players").LocalPlayer
+
+local RP = game:GetService("ReplicatedStorage")
+
+local Combat = RP:WaitForChild("Combat")
+
+local UIS = game:GetService("UserInputService")
+
+local debounce = false
+
+local CD = 1
+
+local currTime = 0
+local prevTime = 0
+
+local count = 0
+
+local numberofanimations = 4
+
+UIS.InputBegan:Connect(function(input,isTyping)
+	if isTyping then
+		return
+	elseif input.UserInputType == Enum.UserInputType.MouseButton1 then
+		if debounce == false then
+			debounce = true
+			currTime = tick()
+			
+			local passedTime =  currTime - prevTime
+			if passedTime < 1 then
+				count = count + 1
+				if count > numberofanimations then
+					count = 1
+				end
+			else
+			count = 1
+			end
+			RP.Combat:FireServer(count)
+	
+		end
+	end
+
+
+end)
+
+RP.Combat.OnClientEvent:Connect(function()
+	prevTime = currTime
+		
+	wait(CD)
+	debounce = false
+end)
+
+-- server script
+
+local player = game:GetService("Players").LocalPlayer
+
+local RP = game:GetService("ReplicatedStorage")
+
+local animations = script:WaitForChild("animations")
+
+local anims = 
+
+{	
+	animations:WaitForChild("Soco"),
+	animations:WaitForChild("Soco"),
+	animations:WaitForChild("Soco"),
+	animations:WaitForChild("Soco")
+}
+
+
+RP.Combat.OnServerEvent:Connect(function(player, count)
+	local Character = player.Character
+	local Humanoid = Character:WaitForChild("Humanoid")
+	
+	local attack = Humanoid:LoadAnimation(anims[count])
+	attack:Play()
+	RP.Combat:FireClient(player)
+end)
