@@ -1,0 +1,96 @@
+-- server script
+
+local datastore = game:GetService("DataStoreService")
+local gamedata = datastore:GetDataStore("status")
+
+local baseStats = {
+	Health = 100,
+	Mana = 100,
+	Defense = 5,
+	Dexterity = 10,
+	Stamina = 100,
+	Strength = 10,
+	Intelligence = 10,
+	Level = 1,
+	Exp = 0
+}
+
+function savedata(player, plrStats)
+	local dataToSave = {}
+	warn("Saving Data...")
+	for i, data in pairs(plrStats:GetChildren()) do
+		dataToSave[i] = data.Value
+	end
+
+	gamedata:SetAsync(player.UserId,dataToSave)
+	warn ("Data Saved!")
+end
+
+game.Players.PlayerAdded:Connect(function(player)
+	local plrstats = Instance.new("Folder", player)
+	plrstats.Name = "plrStats"
+
+	local Health = Instance.new("NumberValue", plrstats)
+	Health.Name = "Health"
+	Health.Value = baseStats.Health
+
+	local Mana = Instance.new("NumberValue", plrstats)
+	Mana.Name = "Mana"
+	Mana.Value = baseStats.Mana
+
+	local Defense = Instance.new("NumberValue", plrstats)
+	Defense.Name = "Defense"
+	Defense.Value = baseStats.Defense
+
+	local Dexterity = Instance.new("NumberValue", plrstats)
+	Dexterity.Name = "Dexterity"
+	Dexterity.Value = baseStats.Dexterity
+
+	local Stamina = Instance.new("NumberValue", plrstats)
+	Stamina.Name = "Stamina"
+	Stamina.Value = baseStats.Stamina
+
+	local Strength = Instance.new("NumberValue", plrstats)
+	Strength.Name = "Strength"
+	Strength.Value = baseStats.Strength
+
+	local Intelligence = Instance.new("NumberValue", plrstats)
+	Intelligence.Name = "Intelligence"
+	Intelligence.Value = baseStats.Intelligence
+
+	local Level = Instance.new("NumberValue", plrstats)
+	Level.Name = "Level"
+	Level.Value = baseStats.Level
+
+	local Exp = Instance.new("NumberValue", plrstats)
+	Exp.Name = "Exp"
+	Exp.Value = baseStats.Exp
+
+	local plrSaves
+
+	pcall(function()
+		plrSaves = gamedata:GetAsync(player.UserId)
+
+	end)
+
+	if plrSaves then
+		warn("Player has Data!")
+		for i, data in pairs(plrstats:GetChildren()) do
+			data.Value = plrSaves[i]
+			print(data.Name,":",data.Value)
+		end
+	else
+		warn("Player has no Data")
+		for i, data in pairs(plrstats:GetChildren()) do
+			print(data.Name,":",data.Value)
+		end
+
+	end
+
+end)
+
+game.Players.PlayerRemoving:Connect(function(player)
+	local plrStats = player:WaitForChild("plrStats")
+	savedata(player, plrStats)
+
+end)
