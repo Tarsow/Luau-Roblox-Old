@@ -1,5 +1,5 @@
 ClickDetector.MouseClick:Connect(function(player)
-    -- código a ser executado quando o jogador clicar na parte
+    -- código a ser executado quando o jogador clicar na parte com o botão esquerdo do mouse
 end)
 
 ClickDetector.MouseHoverEnter:Connect(function(player)
@@ -10,6 +10,6 @@ ClickDetector.MouseHoverLeave:Connect(function(player)
     -- código a ser executado quando o mouse do jogador sair da área do ClickDetector
 end)
 
-ClickDetector.MouseButton1Down:Connect(function(player)
-    -- código a ser executado quando o jogador pressionar o botão esquerdo do mouse
+ClickDetector.RightMouseClick:Connect(function(player)
+    -- código a ser executado quando o jogador pressionar o botão direito do mouse
 end)
