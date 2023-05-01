@@ -1,0 +1,18 @@
+local TweenService = game:GetService("TweenService")
+
+local ClickDetector = script.Parent
+local Part = ClickDetector.Parent
+
+ClickDetector.MouseClick:Connect(function(player)
+	local Tween = TweenService:Create(Part, TweenInfo.new(1), {Position = Part.Position + Vector3.new(0,0,3)})
+	Tween:Play()
+	local Tween = TweenService:Create(Part, TweenInfo.new(1), {Rotation = Part.Rotation + Vector3.new(0,0,90)})
+	Tween:Play()
+end)
+
+ClickDetector.RightMouseClick:Connect(function(player)
+	local Tween = TweenService:Create(Part, TweenInfo.new(1), {Position = Part.Position + Vector3.new(0,0,-3)})
+	Tween:Play()
+	local Tween = TweenService:Create(Part, TweenInfo.new(1), {Rotation = Part.Rotation + Vector3.new(0,0,-90)})
+	Tween:Play()
+end)
