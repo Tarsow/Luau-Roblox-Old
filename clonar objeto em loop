@@ -1,0 +1,6 @@
+while true do
+	local Part = game.ServerStorage.Part:Clone()
+	Part.Parent = workspace
+	Part.Position = Vector3.new(0,80,0)
+	task.wait()
+end
