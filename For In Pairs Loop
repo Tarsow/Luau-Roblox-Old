@@ -1,0 +1,44 @@
+-- o loop sempre vai rodar a mesma quantidade de vezes que a quantidade de variáveis dentro da table
+
+
+
+local tablee = {
+bro = "cock",
+hey = "pls",
+ok = "no"
+}
+
+
+for chave, valor in pairs (tablee) do
+	print(tablee["bro"])
+end
+
+
+-- o resultado seria -- cock(3x)
+
+local tablee = {
+bro = "cock",
+hey = "pls",
+ok = "no"
+}
+
+
+for chave, valor in pairs (tablee) do
+	print(chave .. " : " .. valor)
+end
+
+-- o resultado seria -- bro : cock, hey : pls, ok : no
+
+
+local tablee = {
+"cock",
+"pls",
+"no"
+}
+
+
+for chave, valor in pairs (tablee) do
+	print(chave .. " : " .. valor)
+end
+
+-- o resultado seria -- 1 : cock, 2 : pls, 3 : no 
