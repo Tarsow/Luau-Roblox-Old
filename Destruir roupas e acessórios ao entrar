@@ -1,0 +1,8 @@
+game.Players.PlayerAdded:Connect(function(player)
+	local character = player.Character or player.CharacterAdded:Wait()
+	for _, item in ipairs(character:GetChildren()) do
+		if item:IsA("Accessory") or item:IsA("Clothing") then
+			item:Destroy()
+		end
+	end
+end)
