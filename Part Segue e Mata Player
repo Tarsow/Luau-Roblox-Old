@@ -1,0 +1,26 @@
+-- server script
+
+local TweenService = game:GetService("TweenService")
+local bloco = game.Workspace.Part
+
+game.Players.PlayerAdded:Connect(function(Player)
+	local Character = Player.Character or Player.CharacterAdded:Wait()
+	local Humanoid = Character:FindFirstChildOfClass("Humanoid")
+	local HRP = Humanoid and Humanoid.RootPart
+	Humanoid.WalkSpeed = 50
+	if HRP then
+		while true do
+			local targetPosition = HRP.Position + Vector3.new(0, 0, 0)
+			local tweenInfo = TweenInfo.new(0.1, Enum.EasingStyle.Linear)
+			local tween = TweenService:Create(bloco, tweenInfo, {Position = targetPosition})
+			tween:Play()
+			tween.Completed:Wait()
+		end
+	end
+end)
+
+bloco.Touched:Connect(function(hit)
+	if hit.Parent:FindFirstChild("Humanoid") then
+		hit.Parent.Humanoid.Health = hit.Parent.Humanoid.Health - 1
+	end
+end)
