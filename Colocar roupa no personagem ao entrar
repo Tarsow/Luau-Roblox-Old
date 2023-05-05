@@ -1,0 +1,41 @@
+local shirtId = "rbxassetid://200094368" -- replace with the ID of the new shirt (só algumas roupas funcionam)
+local pantsId = "rbxassetid://225394678" -- replace with the ID of the new pants (só algumas roupas funcionam)
+
+game.Players.PlayerAdded:Connect(function(player)
+	player.CharacterAdded:Connect(function(character)
+		local foundShirt = character:WaitForChild("Shirt")
+		if not foundShirt then -- if there is no shirt
+			print("No shirt found, creating for "..player.Name)
+			local newShirt = Instance.new("Shirt",player.Character)
+			newShirt.Name = "Shirt"
+		else if foundShirt then -- if there is a shirt
+				print("Shirt found, reconstructing for "..player.Name)
+				player.Character.Shirt:remove()
+				local newShirt = Instance.new("Shirt",player.Character)
+				newShirt.Name = "Shirt"
+			end
+		end
+
+
+
+
+		local foundPants = player.Character:WaitForChild("Pants") -- Tries to find Pants
+		if not foundPants then -- if there are no pants
+			print("No pants found, creating for "..player.Name)
+			local newPants = Instance.new("Pants",player.Character)
+			newPants.Name = "Pants"
+		else if foundPants then -- if there are pants
+				print("Pants found, reconstructing for "..player.Name)
+				player.Character.Pants:remove()
+				local newPants = Instance.new("Pants",player.Character)
+				newPants.Name = "Pants"
+			end
+		end
+
+
+
+		player.Character.Shirt.ShirtTemplate = shirtId
+		player.Character.Pants.PantsTemplate = pantsId
+
+	end)
+end)
