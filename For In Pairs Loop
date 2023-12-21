@@ -3,7 +3,7 @@
 
 
 local tablee = {
-bro = "cock",
+bro = "color",
 hey = "pls",
 ok = "no"
 }
@@ -14,10 +14,10 @@ for chave, valor in pairs (tablee) do
 end
 
 
--- o resultado seria -- cock(3x)
+-- o resultado seria -- color(3x)
 
 local tablee = {
-bro = "cock",
+bro = "color",
 hey = "pls",
 ok = "no"
 }
@@ -27,11 +27,11 @@ for chave, valor in pairs (tablee) do
 	print(chave .. " : " .. valor)
 end
 
--- o resultado seria -- bro : cock, hey : pls, ok : no
+-- o resultado seria -- bro : color, hey : pls, ok : no
 
 
 local tablee = {
-"cock",
+"color",
 "pls",
 "no"
 }
@@ -41,4 +41,4 @@ for chave, valor in pairs (tablee) do
 	print(chave .. " : " .. valor)
 end
 
--- o resultado seria -- 1 : cock, 2 : pls, 3 : no 
+-- o resultado seria -- 1 : color, 2 : pls, 3 : no 
