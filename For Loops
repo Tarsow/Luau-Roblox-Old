@@ -1,3 +1,0 @@
-for number = 1, 10, 5 do
-    print(number)
-end
